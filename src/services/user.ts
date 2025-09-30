@@ -17,7 +17,7 @@ export class User {
     );
   }
 
-  getUserById(id: number): Observable<IUser> {
+  getUserById(id: string): Observable<IUser> {
     return this.httpClient.get<IUser>(`${this.apiUrl}/${id}`);
   }
 

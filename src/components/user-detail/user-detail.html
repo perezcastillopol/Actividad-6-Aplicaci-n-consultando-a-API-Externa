@@ -1,1 +1,15 @@
-<p>user-detail works!</p>
+@if (user) {
+  <div class="card mx-auto" style="max-width: 400px;">
+    <img [src]="user.image" width="400" height="400" class="card-img-top" alt="{{user.first_name}}">
+    <div class="card-body">
+      <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+      <p class="card-text"><strong>Username:</strong> {{user.username}}</p>
+      <p class="card-text"><strong>Email:</strong> {{user.email}}</p>
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+      <button class="btn btn-secondary btn-sm" (click)="goBack()">Volver</button>
+      <a [routerLink]="['/updateuser', user.id]" class="btn btn-warning btn-sm">Actualizar</a>
+      <button class="btn btn-danger btn-sm" (click)="deleteUser()">Borrar</button>
+    </div>
+  </div>
+}
