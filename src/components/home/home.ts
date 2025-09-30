@@ -1,9 +1,12 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {IUser} from '../../models/i-user';
 import {User as UserService} from '../../services/user';
+import {RouterLink} from '@angular/router';
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
@@ -18,8 +21,16 @@ export class Home implements OnInit {
 
   loadUsers(): void {
     this.userService.getAllUsers().subscribe(users => {
-      console.log('users', users);
       this.users = users;
     })
+  }
+
+  deleteUser(id: number): void {
+    if (confirm('¿Seguro que quieres eliminar este usuario?')) {
+      this.userService.deleteUser(id).subscribe(user => {
+        this.users = this.users.filter(user => user.id !== id);
+        alert('Usuario eliminado correctamente');
+      })
+    }
   }
 }
