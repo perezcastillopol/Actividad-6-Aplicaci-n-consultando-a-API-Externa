@@ -1,16 +1,5 @@
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-4 g-4">
   @for(user of users; track user._id) {
-    <div class="card h-100">
-      <img [src]="user.image" class="card-img-top" alt="{{user.first_name}}">
-      <div class="card-body">
-        <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
-        <p class="card-text">{{user.email}}</p>
-      </div>
-      <div class="card-footer d-flex justify-content-between">
-        <a [routerLink]="['/user', user._id]" class="btn btn-primary btn-sm">Ver detalle</a>
-        <a [routerLink]="['/updateuser', user._id]" class="btn btn-warning btn-sm">Actualizar</a>
-        <button (click)="deleteUser(user._id)" class="btn btn-danger btn-sm">Borrar</button>
-      </div>
-    </div>
+    <app-user-card [user]="user" (delete)="deleteUser($event)"></app-user-card>
   }
 </div>

@@ -1,11 +1,11 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {IUser} from '../../models/i-user';
 import {User as UserService} from '../../services/user';
-import {RouterLink} from '@angular/router';
+import {UserCard} from '../user-card/user-card';
 @Component({
   selector: 'app-home',
   imports: [
-    RouterLink
+    UserCard
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'
