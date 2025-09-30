@@ -3,30 +3,55 @@
   <div class="mb-3">
     <label class="form-label">Nombre</label>
     <input type="text" class="form-control" formControlName="first_name">
+    @if (userForm.get('first_name')?.touched && userForm.get('first_name')?.invalid) {
+      <div class="text-danger">
+        El nombre es obligatorio.
+      </div>
+    }
   </div>
 
   <div class="mb-3">
     <label class="form-label">Apellidos</label>
     <input type="text" class="form-control" formControlName="last_name">
+    @if (userForm.get('last_name')?.touched && userForm.get('last_name')?.invalid) {
+      <div class="text-danger">
+        El nombre es obligatorio.
+      </div>
+    }
   </div>
 
   <div class="mb-3">
     <label class="form-label">Username</label>
     <input type="text" class="form-control" formControlName="username">
+    @if (userForm.get('username')?.touched && userForm.get('username')?.invalid) {
+      <div class="text-danger">
+        El apellido es obligatorio.
+      </div>
+    }
   </div>
 
   <div class="mb-3">
     <label class="form-label">Email</label>
     <input type="email" class="form-control" formControlName="email">
+    @if (userForm.get('email')?.touched && userForm.get('email')?.invalid) {
+      <div class="text-danger">
+        El email es obligatorio o está mal escrito.
+      </div>
+    }
   </div>
 
   <div class="mb-3">
     <label class="form-label">Imagen (URL)</label>
     <input type="text" class="form-control" formControlName="image">
+    @if (userForm.get('image')?.touched && userForm.get('image')?.invalid) {
+      <div class="text-danger">
+        La imagen es obligatoria o no es una url válida.
+      </div>
+    }
   </div>
 
-  <button type="submit" class="btn btn-primary">
+  <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">
     {{ isEditMode ? 'Actualizar' : 'Guardar' }}
   </button>
-  <a [routerLink]="['/home']" class="btn btn-secondary ms-2">Cancelar</a>
+  <a [routerLink]="['/home']" class="btn btn-secondary ms-2">Volver</a>
 </form>
