@@ -1,11 +1,23 @@
-<div class="card h-100">
-  <img [src]="user.image" class="card-img-top" alt="{{user.first_name}}">
+<div class="card h-100 text-center border border-secondary">
+  <img [src]="user.image" class="rounded-circle mx-auto d-block card-img-top p-4" alt="{{user.first_name}}">
   <div class="card-body">
     <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
   </div>
   <div class="card-footer d-flex justify-content-between">
-    <a [routerLink]="['/user', user._id]" class="btn btn-primary btn-sm">Ver detalle</a>
-    <a [routerLink]="['/updateuser', user._id]" class="btn btn-warning btn-sm">Actualizar</a>
-    <button (click)="onDelete()" class="btn btn-danger btn-sm">Borrar</button>
+    <a [routerLink]="['/user', user._id]" class="btn btn-outline-primary btn-sm d-flex flex-column align-items-center">
+      <i class="bi bi-search" style="font-size: 1.2rem;"></i>
+      <span style="font-size: 0.75rem;">Ver detalle</span>
+    </a>
+
+    <a [routerLink]="['/updateuser', user._id]" class="btn btn-outline-warning btn-sm d-flex flex-column align-items-center">
+      <i class="bi bi-arrow-clockwise" style="font-size: 1.2rem;"></i>
+      <span style="font-size: 0.75rem;">Actualizar</span>
+    </a>
+
+    <button (click)="onDelete()" class="btn btn-outline-danger btn-sm d-flex flex-column align-items-center">
+      <i class="bi bi-trash" style="font-size: 1.2rem;"></i>
+      <span style="font-size: 0.75rem;">Borrar</span>
+    </button>
   </div>
+
 </div>
