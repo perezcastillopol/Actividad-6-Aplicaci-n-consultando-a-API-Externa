@@ -14,9 +14,9 @@ import {User as UserService} from '../../services/user';
 export class UserDetail implements OnInit {
   user!: IUser;
 
-  route = inject(ActivatedRoute);
-  router = inject(Router);
-  userService = inject(UserService);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private userService = inject(UserService);
 
   ngOnInit() {
     const id = String(this.route.snapshot.paramMap.get('id'));
@@ -35,7 +35,7 @@ export class UserDetail implements OnInit {
 
   deleteUser(): void {
     if (confirm(`¿Seguro que quieres eliminar a ${this.user.first_name}?`)) {
-      this.userService.deleteUser(this.user.id).subscribe(user => {
+      this.userService.deleteUser(this.user._id).subscribe(user => {
         alert('Usuario eliminado correctamente');
         this.goBack();
       });

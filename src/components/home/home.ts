@@ -13,7 +13,7 @@ import {RouterLink} from '@angular/router';
 export class Home implements OnInit {
   users: IUser[] = [];
 
-  userService = inject(UserService);
+  private userService = inject(UserService);
 
   ngOnInit(): void {
     this.loadUsers();
@@ -25,10 +25,10 @@ export class Home implements OnInit {
     })
   }
 
-  deleteUser(id: number): void {
+  deleteUser(id: string): void {
     if (confirm('¿Seguro que quieres eliminar este usuario?')) {
       this.userService.deleteUser(id).subscribe(user => {
-        this.users = this.users.filter(user => user.id !== id);
+        this.users = this.users.filter(user => user._id !== id);
         alert('Usuario eliminado correctamente');
       })
     }

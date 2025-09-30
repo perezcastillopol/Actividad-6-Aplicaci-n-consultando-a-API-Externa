@@ -8,7 +8,7 @@
     </div>
     <div class="card-footer d-flex justify-content-between">
       <button class="btn btn-secondary btn-sm" (click)="goBack()">Volver</button>
-      <a [routerLink]="['/updateuser', user.id]" class="btn btn-warning btn-sm">Actualizar</a>
+      <a [routerLink]="['/updateuser', user._id]" class="btn btn-warning btn-sm">Actualizar</a>
       <button class="btn btn-danger btn-sm" (click)="deleteUser()">Borrar</button>
     </div>
   </div>

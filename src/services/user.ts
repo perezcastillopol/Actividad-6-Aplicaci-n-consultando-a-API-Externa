@@ -7,9 +7,9 @@ import {IUser} from '../models/i-user';
   providedIn: 'root'
 })
 export class User {
-  httpClient = inject(HttpClient);
-
   private apiUrl = 'https://peticiones.online/api/users';
+
+  private httpClient = inject(HttpClient);
 
   getAllUsers(): Observable<IUser[]> {
     return this.httpClient.get<any>(this.apiUrl).pipe(
@@ -21,15 +21,15 @@ export class User {
     return this.httpClient.get<IUser>(`${this.apiUrl}/${id}`);
   }
 
-  createNewUser(user: User): Observable<IUser> {
+  createNewUser(user: IUser): Observable<IUser> {
     return this.httpClient.post<IUser>(this.apiUrl, user);
   }
 
-  updateUser(id: number, user: User): Observable<IUser> {
+  updateUser(id: string, user: IUser): Observable<IUser> {
     return this.httpClient.put<IUser>(`${this.apiUrl}/${id}`, user);
   }
 
-  deleteUser(id: number): Observable<any> {
+  deleteUser(id: string): Observable<any> {
     return this.httpClient.delete(`${this.apiUrl}/${id}`);
   }
 
