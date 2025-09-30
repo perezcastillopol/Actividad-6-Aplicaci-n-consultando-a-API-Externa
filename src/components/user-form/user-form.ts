@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {User as UserService} from '../../services/user';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
@@ -15,7 +15,7 @@ import {IUser} from '../../models/i-user';
 })
 export class UserForm implements OnInit{
   userForm!: FormGroup;
-  isEditMode = false;
+  @Input()isEditMode = false;
   userId!: string;
 
   private formBuilder = inject(FormBuilder);
