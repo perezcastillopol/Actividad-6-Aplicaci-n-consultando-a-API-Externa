@@ -1,6 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map, Observable} from 'rxjs';
+import {IUser} from '../models/i-user';
 
 @Injectable({
   providedIn: 'root'
@@ -8,24 +9,24 @@ import {map, Observable} from 'rxjs';
 export class User {
   httpClient = inject(HttpClient);
 
-  private apiUrl = 'https://peticiones.online/users';
+  private apiUrl = 'https://peticiones.online/api/users';
 
-  getAllUsers(): Observable<User[]> {
+  getAllUsers(): Observable<IUser[]> {
     return this.httpClient.get<any>(this.apiUrl).pipe(
-      map(resp => resp.data)
+      map(resp => resp.results)
     );
   }
 
-  getUserById(id: number): Observable<User> {
-    return this.httpClient.get<User>(`${this.apiUrl}/${id}`);
+  getUserById(id: number): Observable<IUser> {
+    return this.httpClient.get<IUser>(`${this.apiUrl}/${id}`);
   }
 
-  createNewUser(user: User): Observable<User> {
-    return this.httpClient.post<User>(this.apiUrl, user);
+  createNewUser(user: User): Observable<IUser> {
+    return this.httpClient.post<IUser>(this.apiUrl, user);
   }
 
-  updateUser(id: number, user: User): Observable<User> {
-    return this.httpClient.put<User>(`${this.apiUrl}/${id}`, user);
+  updateUser(id: number, user: User): Observable<IUser> {
+    return this.httpClient.put<IUser>(`${this.apiUrl}/${id}`, user);
   }
 
   deleteUser(id: number): Observable<any> {
