@@ -1,0 +1,11 @@
+.card-css {
+  width: 100%;
+}
+
+.user-img {
+  width: 80%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
